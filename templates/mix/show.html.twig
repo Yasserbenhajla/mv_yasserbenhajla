@@ -14,9 +14,10 @@ Mix
                  
             </div>
             <div class="col-12 col-md-8 ps-5">
+            <h2 class="mb_4"> {{ mix.trackCount}} songs <small> (genre: {{mix.genre}})</small>
+            <p> {{mix.description}}</p>
             
             
-                TODO: print track count, genre and description <br>
                 {{ mix.votesString }} votes
                     
                     <form action="{{ path('app_mix_vote', {id: mix.id }) }}" method="POST">
