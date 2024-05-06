@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation\Slug;
 use App\Repository\VinylMixRepository;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 
@@ -31,6 +32,10 @@ class VinylMix
 
     #[ORM\Column]
     private ?int $votes = 0;
+
+    #[ORM\Column(length: 100, unique: true)]
+    #[Slug(fields: ['title'])]
+    private ?string $slug = null;
 
     public function getId(): ?int
     {
@@ -119,5 +124,17 @@ public function upVote(): void
 public function downVote(): void
 {
     $this->votes--;
+}
+
+public function getSlug(): ?string
+{
+    return $this->slug;
+}
+
+public function setSlug(string $slug): static
+{
+    $this->slug = $slug;
+
+    return $this;
 }
 }
