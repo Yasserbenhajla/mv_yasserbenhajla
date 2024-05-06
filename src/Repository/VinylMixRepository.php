@@ -23,7 +23,7 @@ class VinylMixRepository extends ServiceEntityRepository
     }
     private function addOrderByVotesQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
     {
-        $queryBuilder = $queryBuilder ?? $this->createQueryBuilder('mix');
+        $queryBuilder ??= $this->$queryBuilder ?? $this->createQueryBuilder('mix');
         return $queryBuilder->orderBy('mix.votes', 'DESC'); 
     }
 
